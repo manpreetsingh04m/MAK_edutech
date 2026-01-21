@@ -13,12 +13,21 @@ export default function IELTSCoachingPage() {
   return (
     <PageLayout>
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-10 md:px-6 md:pt-14">
-      <nav className="mb-4 text-xs text-slate-500 sm:text-sm">
-        <Link href="/" className="hover:text-sky-700">
-          Home
-        </Link>{" "}
-        / <span className="text-slate-700">IELTS & Coaching</span>
-      </nav>
+        <nav className="mb-4 flex items-center justify-between text-xs text-slate-500 sm:text-sm">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1 rounded-full border border-slate-200 px-3 py-1.5 font-medium text-slate-700 hover:border-sky-600 hover:text-sky-700"
+          >
+            <span>←</span>
+            <span>Back to Home</span>
+          </Link>
+          <div className="hidden sm:block">
+            <Link href="/" className="hover:text-sky-700">
+              Home
+            </Link>{" "}
+            / <span className="text-slate-700">IELTS & Coaching</span>
+          </div>
+        </nav>
 
       <header className="max-w-3xl">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sky-700">
