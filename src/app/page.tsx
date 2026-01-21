@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Header from "./components/Header";
 
@@ -72,12 +70,12 @@ const faqs = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-linear-to-b from-slate-50 to-white">
       <Header />
 
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-8 md:px-6 md:pt-12">
         {/* Enhanced Hero Section */}
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-600 via-sky-700 to-blue-800 px-6 py-12 text-white shadow-2xl sm:px-10 sm:py-16 md:px-12 md:py-20">
+        <section className="relative overflow-hidden rounded-3xl bg-linear-to-br from-sky-600 via-sky-700 to-blue-800 px-6 py-12 text-white shadow-2xl sm:px-10 sm:py-16 md:px-12 md:py-20">
           <div className="relative z-10 max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sky-200 sm:text-sm">
               Jalandhar Cantt • Punjab
@@ -128,7 +126,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-transparent to-sky-900/20 opacity-50"></div>
+          <div className="absolute right-0 top-0 h-full w-1/3 bg-linear-to-l from-transparent to-sky-900/20 opacity-50"></div>
         </section>
 
         {/* Detailed services */}
