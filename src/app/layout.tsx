@@ -13,9 +13,41 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MAK Edutech | Visas, Packages, Ticketing & Insurance",
+  metadataBase: new URL("https://mak-edutech.vercel.app"),
+  title:
+    "MAK Edutech | Visas, Travel Packages, Flight & Railway Ticketing, Insurance & IELTS Coaching in Jalandhar Cantt",
   description:
-    "MAK Edutech offers expert services for Tourist & Study Visas, Travel Packages, Ticketing and Insurance, along with coaching and counseling for students.",
+    "MAK Edutech in Jalandhar Cantt, Jalandhar (Punjab) offers Tourist & Study Visas, Travel Packages, Flight Ticketing, Railway Ticketing & Reservations, Travel Insurance and IELTS coaching for students and families.",
+  keywords: [
+    "MAK Edutech",
+    "visa consultant Jalandhar Cantt",
+    "visa consultant Jalandhar",
+    "tourist visa Jalandhar",
+    "study visa Jalandhar",
+    "railway ticket booking Jalandhar Cantt",
+    "railway ticket reservations Jalandhar",
+    "flight ticketing Jalandhar",
+    "travel agency in Punjab",
+    "IELTS coaching in Jalandhar",
+  ],
+  openGraph: {
+    title:
+      "MAK Edutech | Visas, Travel Packages, Flight & Railway Ticketing, Insurance & IELTS Coaching",
+    description:
+      "Visa and travel agency in Jalandhar Cantt providing Tourist & Study Visas, Travel Packages, Flight and Railway Ticketing & Reservations, Travel Insurance and IELTS coaching.",
+    url: "https://mak-edutech.vercel.app",
+    siteName: "MAK Edutech",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/makEdutech.png",
+        width: 1200,
+        height: 630,
+        alt: "MAK Edutech visa, travel and coaching institute in Jalandhar Cantt",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

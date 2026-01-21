@@ -1,38 +1,50 @@
 "use client";
 
-import Image from "next/image";
-import type { FormEvent } from "react";
+import Link from "next/link";
+import Header from "./components/Header";
 
 const services = [
   {
     title: "Tourist & Visitor Visas",
     description:
       "Guidance for applications, documentation, and interviews for popular destinations like Canada, UK, USA, Australia, and Europe.",
+    href: "/visas",
   },
   {
     title: "Study Visas",
     description:
       "End‑to‑end support for admissions, visa filing, SOPs, and pre‑departure counseling for students.",
+    href: "/study-visas",
   },
   {
-    title: "Ticketing",
+    title: "Flight Ticketing",
     description:
-      "Domestic and international flight ticket booking with transparent pricing and flexible options.",
+      "Domestic and international flight ticket booking with transparent pricing, flexible options, and itinerary support.",
+    href: "/flight-ticketing",
+  },
+  {
+    title: "Railway Ticketing & Reservations",
+    description:
+      "Railway ticket booking and seat reservations for major routes across India, including PNR assistance and travel planning from Jalandhar Cantt.",
+    href: "/railway-ticketing",
   },
   {
     title: "Travel Packages",
     description:
       "Customised holiday and family packages with hotels, sightseeing, and local transfers included.",
+    href: "/travel-packages",
   },
   {
     title: "Travel Insurance",
     description:
       "Comprehensive insurance plans that cover medical emergencies, baggage loss, and trip interruptions.",
+    href: "/travel-insurance",
   },
   {
     title: "IELTS & Coaching Support",
     description:
       "Focused coaching, mock tests, and doubt sessions to help you secure your desired band score.",
+    href: "/ielts-coaching",
   },
 ];
 
@@ -59,151 +71,68 @@ const faqs = [
 ];
 
 export default function Home() {
-  const handleEnquirySubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const name = (formData.get("name") as string | null) ?? "";
-    const phone = (formData.get("phone") as string | null) ?? "";
-    const interest = (formData.get("interest") as string | null) ?? "";
-    const message = (formData.get("message") as string | null) ?? "";
-
-    const composedMessage = [
-      "New enquiry from MAK Edutech website:",
-      name && `Name: ${name}`,
-      phone && `Mobile / WhatsApp: ${phone}`,
-      interest && `Interested In: ${interest}`,
-      message && `Message: ${message}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    const encoded = encodeURIComponent(composedMessage);
-
-    // Send to WhatsApp on the institute number
-    const whatsappUrl = `https://wa.me/919988266786?text=${encoded}`;
-    window.open(whatsappUrl, "_blank");
-  };
-
   return (
-    <div className="min-h-screen bg-slate-50">
-      <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
-          <div className="flex items-center gap-3">
-            <div className="relative h-10 w-32 sm:w-40">
-              <Image
-                src="/Mak Edutech Logo.jpg"
-                alt="MAK Edutech logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <p className="hidden text-xs font-medium tracking-wide text-slate-500 sm:block">
-              Visas • Packages • Ticketing • Insurance
-            </p>
-          </div>
-          <nav className="hidden items-center gap-6 text-sm font-medium text-slate-700 md:flex">
-            <a href="#services" className="hover:text-sky-700">
-              Services
-            </a>
-            <a href="#about" className="hover:text-sky-700">
-              About
-            </a>
-            <a href="#support" className="hover:text-sky-700">
-              Support
-            </a>
-            <a href="#faqs" className="hover:text-sky-700">
-              FAQs
-            </a>
-            <a href="#contact" className="rounded-full bg-sky-700 px-4 py-2 text-white shadow-sm hover:bg-sky-800">
-              Contact
-            </a>
-          </nav>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      <Header />
 
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-8 md:px-6 md:pt-12">
-        {/* Hero + primary services */}
-        <section className="grid gap-8 md:grid-cols-[1.2fr,1fr] md:items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sky-700">
-              Jalandhar Cantt
+        {/* Enhanced Hero Section */}
+        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-600 via-sky-700 to-blue-800 px-6 py-12 text-white shadow-2xl sm:px-10 sm:py-16 md:px-12 md:py-20">
+          <div className="relative z-10 max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sky-200 sm:text-sm">
+              Jalandhar Cantt • Punjab
             </p>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              Your trusted partner for{" "}
-              <span className="text-sky-700">Visas & Overseas Travel</span>
+            <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+              Your Trusted Partner for{" "}
+              <span className="text-sky-200">Visas & Overseas Travel</span>
             </h1>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-sky-100 sm:text-lg">
               MAK Edutech in Jalandhar Cantt offers expert guidance for Tourist
-              and Study Visas, International Travel Packages, Ticketing and
-              Insurance—along with IELTS coaching and career counseling so you
-              can plan your journey with confidence.
+              and Study Visas, International Travel Packages, Flight and Railway
+              Ticketing & Reservations, and Travel Insurance—along with IELTS
+              coaching and career counseling so you can plan your journey with
+              confidence.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="tel:+919988266786"
-                className="rounded-full bg-sky-700 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-800"
+                className="rounded-full bg-white px-8 py-3.5 text-sm font-bold text-sky-700 shadow-lg transition hover:bg-sky-50 hover:shadow-xl sm:px-10 sm:py-4 sm:text-base"
               >
-                Call Now
+                📞 Call Now: +91 99882 66786
               </a>
               <a
-                href="#contact"
-                className="rounded-full border border-slate-300 px-6 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-sky-600 hover:text-sky-700"
+                href="#services"
+                className="rounded-full border-2 border-white/90 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20 sm:px-10 sm:py-4 sm:text-base"
               >
-                Visit Institute Details
+                Explore Services ↓
               </a>
             </div>
-            <dl className="mt-6 grid max-w-xl grid-cols-2 gap-4 text-xs text-slate-600 sm:text-sm">
-              <div>
-                <dt className="font-semibold text-slate-800">
-                  Location & Infrastructure
-                </dt>
-                <dd className="mt-1">
-                  Conveniently located in Jalandhar Cantt with modern classrooms
-                  and a student‑friendly environment.
-                </dd>
+            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+              <div className="rounded-xl bg-white/10 p-4 backdrop-blur">
+                <p className="text-2xl font-bold">7+</p>
+                <p className="mt-1 text-xs text-sky-200 sm:text-sm">
+                  Services
+                </p>
               </div>
-              <div>
-                <dt className="font-semibold text-slate-800">
-                  Trusted Guidance
-                </dt>
-                <dd className="mt-1">
-                  Experienced team offering transparent advice at every step of
-                  your journey.
-                </dd>
+              <div className="rounded-xl bg-white/10 p-4 backdrop-blur">
+                <p className="text-2xl font-bold">100%</p>
+                <p className="mt-1 text-xs text-sky-200 sm:text-sm">
+                  Transparent
+                </p>
               </div>
-            </dl>
-          </div>
-
-          <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100 sm:p-5">
-            <div className="relative flex h-52 w-full items-center justify-center overflow-hidden rounded-xl bg-slate-100 sm:h-64">
-              <Image
-                src="/makEdutech.png"
-                alt="MAK Edutech office placeholder"
-                fill
-                className="object-contain opacity-90"
-                priority
-              />
-            </div>
-            <div className="mt-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
-                Our Services
-              </p>
-              <ul className="mt-2 grid grid-cols-2 gap-2 text-xs text-slate-700 sm:text-sm">
-                <li>Tourist & Visitor Visas</li>
-                <li>Study Visas</li>
-                <li>Ticketing</li>
-                <li>Travel Packages</li>
-                <li>Travel Insurance</li>
-                <li>IELTS & Coaching</li>
-              </ul>
+              <div className="col-span-2 rounded-xl bg-white/10 p-4 backdrop-blur sm:col-span-1">
+                <p className="text-2xl font-bold">24/7</p>
+                <p className="mt-1 text-xs text-sky-200 sm:text-sm">
+                  Support
+                </p>
+              </div>
             </div>
           </div>
+          <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-transparent to-sky-900/20 opacity-50"></div>
         </section>
 
         {/* Detailed services */}
-        <section id="services" className="mt-14 md:mt-20">
+        <section id="services" className="mt-16 md:mt-24">
           <div className="flex items-baseline justify-between gap-4">
             <div>
               <h2 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
@@ -222,15 +151,48 @@ export default function Home() {
                 key={service.title}
                 className="flex flex-col rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:shadow-md"
               >
-                <h3 className="text-sm font-semibold text-slate-900 sm:text-base">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
-                  {service.description}
-                </p>
+                <Link href={service.href} className="group block">
+                  <h3 className="text-sm font-semibold text-slate-900 sm:text-base group-hover:text-sky-700 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                    {service.description}
+                  </p>
+                  <p className="mt-3 text-xs font-semibold text-sky-700 sm:text-sm group-hover:underline">
+                    Learn more →
+                  </p>
+                </Link>
               </article>
             ))}
           </div>
+          <section
+            id="railway-ticketing"
+            className="mt-10 rounded-2xl bg-slate-50 p-5 text-sm text-slate-700 sm:text-base"
+          >
+            <h3 className="text-base font-semibold tracking-tight text-slate-900 sm:text-lg">
+              Railway Ticketing & Reservations from Jalandhar Cantt
+            </h3>
+            <p className="mt-2 leading-relaxed">
+              Along with visa and flight ticketing services, MAK Edutech also
+              helps you with{" "}
+              <span className="font-semibold">
+                railway ticket booking and seat reservations
+              </span>{" "}
+              across major routes in India. Whether you are a student travelling
+              to join your course, a family planning a holiday, or a working
+              professional commuting for work, we assist with selecting
+              convenient trains, classes and routes from Jalandhar Cantt and
+              nearby stations.
+            </p>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-xs text-slate-700 sm:text-sm">
+              <li>Guidance for train options, timings and available classes</li>
+              <li>Support with PNR status, seat preferences and basic queries</li>
+              <li>
+                Coordination with your overall travel plan, including visas,
+                flights and accommodation
+              </li>
+            </ul>
+          </section>
         </section>
 
         {/* About & Coaching */}
@@ -410,7 +372,7 @@ export default function Home() {
               <div>
                 <dt className="font-semibold text-slate-900">Address</dt>
                 <dd className="mt-1">
-                  MAK Edutech, Jalandhar Cantt, Jalandhar, Punjab, India.
+                  Royal Enclave, 38 B, Deep Nagar Rd, Jalandhar Cantt, Jalandhar, Punjab 144005
                 </dd>
               </div>
               <div>
@@ -437,7 +399,10 @@ export default function Home() {
       <footer className="border-t border-slate-200 bg-white py-5">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-xs text-slate-500 sm:flex-row md:px-6">
           <p>© {new Date().getFullYear()} MAK Edutech. All rights reserved.</p>
-          <p>Visas • Packages • Ticketing • Insurance • IELTS Coaching</p>
+          <p>
+            Visas • Packages • Ticketing (Flights & Railways) • Insurance •
+            IELTS Coaching
+          </p>
         </div>
       </footer>
     </div>
